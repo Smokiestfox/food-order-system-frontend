@@ -1,0 +1,224 @@
+@use '../../styles/variables' as *;
+
+.cartPage {
+  padding: $space-8 0;
+
+  h1 {
+    margin-bottom: $space-2;
+  }
+}
+
+.restaurantName {
+  color: $gray-600;
+  margin-bottom: $space-8;
+
+  [data-theme='dark'] & {
+    color: $dark-text-muted;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-8;
+
+  @include respond-to(lg) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.itemsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  padding: $space-4;
+  background: white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+
+  [data-theme='dark'] & {
+    background: $dark-surface;
+  }
+}
+
+.itemInfo {
+  flex: 1;
+
+  h3 {
+    font-size: $font-size-base;
+    margin-bottom: $space-1;
+  }
+}
+
+.price {
+  font-weight: 600;
+  color: $primary;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin: 0 $space-6;
+
+  button {
+    width: 30px;
+    height: 30px;
+    border-radius: $radius-full;
+    background: $gray-100;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    [data-theme='dark'] & {
+      background: $dark-surface-2;
+      color: $dark-text;
+    }
+
+    &:hover {
+      background: $gray-200;
+      
+      [data-theme='dark'] & {
+        background: $dark-border;
+      }
+    }
+  }
+
+  span {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+  }
+}
+
+.removeBtn {
+  color: $gray-400;
+  background: transparent;
+  font-size: 1.2rem;
+
+  &:hover {
+    color: $error;
+  }
+}
+
+.clearBtn {
+  align-self: flex-start;
+  padding: $space-2 $space-4;
+  color: $error;
+  background: transparent;
+  border: 1px solid $error;
+  border-radius: $radius-md;
+  margin-top: $space-2;
+
+  &:hover {
+    background: rgba($error, 0.1);
+  }
+}
+
+.checkoutSection {
+  background: white;
+  padding: $space-6;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+  height: fit-content;
+
+  [data-theme='dark'] & {
+    background: $dark-surface;
+  }
+
+  h2 {
+    margin-bottom: $space-4;
+  }
+}
+
+.formGroup {
+  margin-bottom: $space-4;
+
+  label {
+    display: block;
+    margin-bottom: $space-2;
+    font-size: $font-size-sm;
+    font-weight: 500;
+  }
+
+  textarea {
+    width: 100%;
+    padding: $space-3;
+    border: 1px solid $gray-300;
+    border-radius: $radius-md;
+    resize: vertical;
+    background: transparent;
+    color: inherit;
+
+    [data-theme='dark'] & {
+      border-color: $dark-border;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+}
+
+.summary {
+  margin-top: $space-6;
+  padding-top: $space-6;
+  border-top: 1px solid $gray-200;
+
+  [data-theme='dark'] & {
+    border-color: $dark-border;
+  }
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $space-2;
+  color: $gray-600;
+
+  [data-theme='dark'] & {
+    color: $dark-text-muted;
+  }
+
+  &.totalRow {
+    margin-top: $space-4;
+    padding-top: $space-4;
+    border-top: 1px dashed $gray-300;
+    font-size: $font-size-xl;
+    font-weight: 700;
+    color: $gray-900;
+
+    [data-theme='dark'] & {
+      border-color: $dark-border;
+      color: $dark-text;
+    }
+  }
+}
+
+.checkoutBtn {
+  width: 100%;
+  margin-top: $space-6;
+  padding: $space-3;
+  font-size: $font-size-lg;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.errorAlert {
+  background: rgba($error, 0.1);
+  color: $error;
+  padding: $space-3;
+  border-radius: $radius-md;
+  margin-bottom: $space-4;
+  font-size: $font-size-sm;
+}

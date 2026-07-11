@@ -1,0 +1,154 @@
+@use '../../styles/variables' as *;
+
+.detailPage {
+  padding-bottom: $space-16;
+}
+
+.header {
+  background: $primary-50;
+  padding: $space-12 0;
+  margin-bottom: $space-8;
+
+  [data-theme='dark'] & {
+    background: rgba($primary, 0.1);
+  }
+}
+
+.headerContent {
+  h1 {
+    font-size: $font-size-4xl;
+    margin-bottom: $space-2;
+  }
+}
+
+.category {
+  font-weight: 600;
+  color: $primary-dark;
+  text-transform: capitalize;
+  margin-bottom: $space-1;
+}
+
+.address {
+  color: $gray-600;
+  margin-bottom: $space-4;
+
+  [data-theme='dark'] & {
+    color: $dark-text-muted;
+  }
+}
+
+.description {
+  max-width: 600px;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-12;
+
+  @include respond-to(lg) {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.menuSection, .reviewSection {
+  h2 {
+    margin-bottom: $space-6;
+    border-bottom: 2px solid $gray-200;
+    padding-bottom: $space-2;
+
+    [data-theme='dark'] & {
+      border-color: $dark-border;
+    }
+  }
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $space-4;
+  background: white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+
+  [data-theme='dark'] & {
+    background: $dark-surface;
+  }
+
+  button {
+    padding: $space-2 $space-4;
+    border-radius: $radius-md;
+    background: $primary;
+    color: white;
+    font-weight: 600;
+    transition: background $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: $primary-dark;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.itemInfo {
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $space-1;
+  }
+
+  p {
+    color: $gray-500;
+    font-size: $font-size-sm;
+    margin-bottom: $space-2;
+
+    [data-theme='dark'] & {
+      color: $dark-text-muted;
+    }
+  }
+}
+
+.price {
+  font-weight: 700;
+  color: $primary;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.reviewCard {
+  padding: $space-4;
+  background: $gray-50;
+  border-radius: $radius-lg;
+
+  [data-theme='dark'] & {
+    background: $dark-surface-2;
+  }
+
+  p {
+    margin-bottom: $space-2;
+  }
+
+  small {
+    color: $gray-500;
+  }
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: $space-2;
+}

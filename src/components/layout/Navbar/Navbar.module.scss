@@ -1,0 +1,314 @@
+@use '../../../styles/variables' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @include glass(0.85);
+  border-bottom: 1px solid rgba($gray-200, 0.5);
+  transition: all $transition-base;
+
+  [data-theme='dark'] & {
+    @include glass-dark(0.85);
+    border-bottom-color: $dark-border;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    max-width: $breakpoint-xl;
+    margin: 0 auto;
+    padding: 0 $space-4;
+
+    @include respond-to(md) {
+      padding: 0 $space-6;
+      height: 72px;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-xl;
+    font-weight: 800;
+    color: $primary;
+    text-decoration: none;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.02);
+      color: $primary;
+    }
+
+    span {
+      background: linear-gradient(135deg, $primary, $primary-dark);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    &-icon {
+      font-size: 1.6rem;
+      display: flex;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include respond-to(md) {
+      display: flex;
+      align-items: center;
+      gap: $space-1;
+    }
+  }
+
+  &__link {
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $gray-600;
+    text-decoration: none;
+    transition: all $transition-fast;
+
+    [data-theme='dark'] & {
+      color: $dark-text-muted;
+    }
+
+    &:hover, &--active {
+      color: $primary;
+      background: $primary-50;
+
+      [data-theme='dark'] & {
+        background: rgba($primary, 0.1);
+        color: $primary-light;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-lg;
+    background: transparent;
+    color: $gray-600;
+    font-size: 1.25rem;
+    transition: all $transition-fast;
+    @include focus-ring;
+
+    [data-theme='dark'] & {
+      color: $dark-text-muted;
+    }
+
+    &:hover {
+      background: $primary-50;
+      color: $primary;
+
+      [data-theme='dark'] & {
+        background: rgba($primary, 0.1);
+        color: $primary-light;
+      }
+    }
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: $radius-full;
+    background: $primary;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  &__theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-lg;
+    background: transparent;
+    color: $gray-600;
+    font-size: 1.1rem;
+    transition: all $transition-fast;
+    @include focus-ring;
+
+    [data-theme='dark'] & {
+      color: $dark-text-muted;
+    }
+
+    &:hover {
+      background: $gray-100;
+      [data-theme='dark'] & {
+        background: $dark-surface;
+      }
+    }
+  }
+
+  &__auth-btn {
+    padding: $space-2 $space-5;
+    border-radius: $radius-full;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all $transition-base;
+    @include focus-ring;
+
+    &--login {
+      color: $primary;
+      background: transparent;
+
+      &:hover {
+        background: $primary-50;
+        color: $primary;
+      }
+    }
+
+    &--signup {
+      color: white;
+      background: linear-gradient(135deg, $primary, $primary-dark);
+      box-shadow: 0 2px 8px rgba($primary, 0.3);
+
+      &:hover {
+        box-shadow: 0 4px 16px rgba($primary, 0.4);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  &__user-menu {
+    position: relative;
+  }
+
+  &__user-btn {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-1 $space-3 $space-1 $space-1;
+    border-radius: $radius-full;
+    background: transparent;
+    color: $gray-700;
+    font-size: $font-size-sm;
+    font-weight: 500;
+    transition: all $transition-fast;
+
+    [data-theme='dark'] & {
+      color: $dark-text;
+    }
+
+    &:hover {
+      background: $gray-100;
+      [data-theme='dark'] & {
+        background: $dark-surface;
+      }
+    }
+  }
+
+  &__user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-full;
+    background: linear-gradient(135deg, $primary, $accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: $font-size-sm;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 200px;
+    padding: $space-2;
+    border-radius: $radius-lg;
+    background: white;
+    border: 1px solid $gray-200;
+    box-shadow: $shadow-xl;
+    animation: fadeInUp 200ms ease;
+
+    [data-theme='dark'] & {
+      background: $dark-surface;
+      border-color: $dark-border;
+    }
+  }
+
+  &__dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    width: 100%;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $gray-700;
+    font-size: $font-size-sm;
+    text-decoration: none;
+    transition: all $transition-fast;
+
+    [data-theme='dark'] & {
+      color: $dark-text;
+    }
+
+    &:hover {
+      background: $gray-100;
+      [data-theme='dark'] & {
+        background: $dark-surface-2;
+      }
+    }
+
+    &--danger {
+      color: $error;
+      &:hover {
+        background: rgba($error, 0.1);
+      }
+    }
+  }
+
+  // Mobile menu
+  &__mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $radius-lg;
+    background: transparent;
+    color: $gray-700;
+    font-size: 1.3rem;
+    @include focus-ring;
+
+    [data-theme='dark'] & {
+      color: $dark-text;
+    }
+
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+}

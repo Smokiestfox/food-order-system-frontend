@@ -1,0 +1,220 @@
+@use 'variables' as *;
+
+// ==========================================
+// Global Styles — Order System
+// ==========================================
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $gray-900;
+  background-color: $gray-50;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  [data-theme='dark'] & {
+    color: $dark-text;
+    background-color: $dark-bg;
+  }
+}
+
+[data-theme='dark'] {
+  color: $dark-text;
+  background-color: $dark-bg;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: $gray-900;
+
+  [data-theme='dark'] & {
+    color: white;
+  }
+}
+
+h1 { font-size: $font-size-4xl; }
+h2 { font-size: $font-size-3xl; }
+h3 { font-size: $font-size-2xl; }
+h4 { font-size: $font-size-xl; }
+
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+// Utility Classes
+.container {
+  width: 100%;
+  max-width: $breakpoint-xl;
+  margin: 0 auto;
+  padding: 0 $space-4;
+
+  @include respond-to(md) {
+    padding: 0 $space-6;
+  }
+
+  @include respond-to(lg) {
+    padding: 0 $space-8;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn $transition-base forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp $transition-slow forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight $transition-slow forwards;
+}
+
+// Skeleton loader
+.skeleton {
+  background: linear-gradient(90deg, $gray-200 25%, $gray-100 50%, $gray-200 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $radius-md;
+
+  [data-theme='dark'] & {
+    background: linear-gradient(90deg, $dark-surface 25%, $dark-surface-2 50%, $dark-surface 75%);
+    background-size: 200% 100%;
+  }
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gray-100;
+
+  [data-theme='dark'] & {
+    background: $dark-surface;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-300;
+  border-radius: $radius-full;
+
+  &:hover {
+    background: $gray-400;
+  }
+
+  [data-theme='dark'] & {
+    background: $dark-border;
+
+    &:hover {
+      background: $gray-500;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@use '../../styles/variables' as *;
+
+.authContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 72px);
+  padding: $space-4;
+  background: $gray-50;
+
+  [data-theme='dark'] & {
+    background: $dark-bg;
+  }
+}
+
+.authCard {
+  width: 100%;
+  max-width: 400px;
+  padding: $space-8;
+  background: white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+
+  [data-theme='dark'] & {
+    background: $dark-surface;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: $space-2;
+  }
+}
+
+.subtitle {
+  text-align: center;
+  color: $gray-500;
+  margin-bottom: $space-6;
+
+  [data-theme='dark'] & {
+    color: $dark-text-muted;
+  }
+}
+
+.formGroup {
+  margin-bottom: $space-4;
+
+  label {
+    display: block;
+    margin-bottom: $space-2;
+    font-weight: 500;
+    font-size: $font-size-sm;
+  }
+
+  input, select {
+    width: 100%;
+    padding: $space-3;
+    border: 1px solid $gray-300;
+    border-radius: $radius-md;
+    transition: border-color $transition-fast;
+    background: white;
+    color: $gray-900;
+
+    [data-theme='dark'] & {
+      background: $dark-surface-2;
+      border-color: $dark-border;
+      color: $dark-text;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+    }
+  }
+
+  .inputError {
+    border-color: $error;
+  }
+}
+
+.errorText {
+  display: block;
+  color: $error;
+  font-size: $font-size-xs;
+  margin-top: $space-1;
+}
+
+.errorAlert {
+  background: rgba($error, 0.1);
+  color: $error;
+  padding: $space-3;
+  border-radius: $radius-md;
+  margin-bottom: $space-4;
+  font-size: $font-size-sm;
+  text-align: center;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: $space-3;
+  background: $primary;
+  color: white;
+  font-weight: 600;
+  border-radius: $radius-md;
+  margin-top: $space-4;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: $primary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.footer {
+  text-align: center;
+  margin-top: $space-6;
+  font-size: $font-size-sm;
+  color: $gray-600;
+
+  [data-theme='dark'] & {
+    color: $dark-text-muted;
+  }
+
+  a {
+    color: $primary;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
