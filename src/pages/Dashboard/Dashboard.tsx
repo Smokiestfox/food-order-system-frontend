@@ -19,7 +19,7 @@ export default function Dashboard() {
   const { user } = useAuthStore();
   const queryClient = useQueryClient();
 
-  const { data: restaurants, isLoading: loadingRest } = useQuery({
+  const { isLoading: loadingRest } = useQuery({
     queryKey: ['my-restaurants'],
     queryFn: () => restaurantService.getAll(),
     // In a real app, this would be a specific endpoint like getMyRestaurants.
