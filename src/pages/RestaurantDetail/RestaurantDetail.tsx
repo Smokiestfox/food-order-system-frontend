@@ -9,7 +9,7 @@ import styles from './RestaurantDetail.module.scss';
 export default function RestaurantDetail() {
   const { id } = useParams<{ id: string }>();
   const { user } = useAuthStore();
-  const { items, addItem } = useCartStore();
+  const { addItem } = useCartStore();
 
   const { data: restaurant, isLoading: loadingRest } = useQuery({
     queryKey: ['restaurant', id],

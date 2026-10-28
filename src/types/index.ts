@@ -2,11 +2,12 @@
 // Type Definitions — Order System
 // ==========================================
 
-export enum UserRole {
-  CUSTOMER = 'customer',
-  RESTAURANT_OWNER = 'restaurant_owner',
-  ADMIN = 'admin',
-}
+export const UserRole = {
+  CUSTOMER: 'customer',
+  RESTAURANT_OWNER: 'restaurant_owner',
+  ADMIN: 'admin',
+} as const;
+export type UserRole = typeof UserRole[keyof typeof UserRole];
 
 export interface User {
   id: string;
@@ -49,14 +50,15 @@ export interface MenuItem {
   updated_at: string;
 }
 
-export enum OrderStatus {
-  PENDING = 'pending',
-  CONFIRMED = 'confirmed',
-  PREPARING = 'preparing',
-  DELIVERING = 'delivering',
-  DELIVERED = 'delivered',
-  CANCELLED = 'cancelled',
-}
+export const OrderStatus = {
+  PENDING: 'pending',
+  CONFIRMED: 'confirmed',
+  PREPARING: 'preparing',
+  DELIVERING: 'delivering',
+  DELIVERED: 'delivered',
+  CANCELLED: 'cancelled',
+} as const;
+export type OrderStatus = typeof OrderStatus[keyof typeof OrderStatus];
 
 export interface OrderItem {
   id: string;
